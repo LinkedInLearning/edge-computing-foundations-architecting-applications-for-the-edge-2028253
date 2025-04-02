@@ -28,7 +28,7 @@ To resolve this issue:
 
 ## Instructor
 
-Instructor name
+Instructor name: Obinna Amalu
 
 Instructor description
 

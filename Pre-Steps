@@ -1,0 +1,42 @@
+FOR CLOUDSQL (YOU WOULD NEED TO ENABLE CLOUDSQL AND CREATE THE INSTANCE/DB FIRST. READ THE GOOGLE DOCS FOR THIS)
+================================================================================================================
+Before you can use cloudsql in your deployment, a few steps need to be taken.
+
+  gcloud auth application-default login
+  gcloud iam service-accounts create cloudsql-proxy-sa --display-name="Cloud SQL Proxy GKE"
+  gcloud projects add-iam-policy-binding <PROJECT_ID> --member="serviceAccount:cloudsql-proxy-sa@<PROJECT_ID>.iam.gserviceaccount.com" --role="roles/cloudsql.client"
+  gcloud projects add-iam-policy-binding gdcedge --member="serviceAccount:cloudsql-proxy-sa@gdcedge.iam.gserviceaccount.com" --role="roles/cloudsql.client"
+  gcloud iam service-accounts keys create credentials.json --iam-account=cloudsql-proxy-sa@gdcedge.iam.gserviceaccount.com
+  kubectl create secret generic cloudsql-instance-credentials --from-file=credentials.json=./credentials.json (this credentials.json file is needed to deploy your app as it holds the credentials to cloudsql)
+
+  Next:
+  Install cloudsql proxy to test that you can connect to cloudsql successfully
+
+  URL="https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.15.2"
+  curl "$URL/cloud-sql-proxy.darwin.amd64" -o cloud-sql-proxy
+  chmod +x cloud-sql-proxy
+  ./cloud-sql-proxy --address 0.0.0.0 --port 5432 <INSTANCE_CONNECTION_NAME>
+
+  ## Connect to the database
+  psql -h localhost -d <DB_NAME> -U <user> (at the password prompt, enter the password created)
+
+  At the psql prompt, connect to the postgres database and then you can create the database you need (if you didnt fo it above)
+  create database <database_name>;
+
+  next connect to the database from the psql prompt
+  \c <database_name>
+
+  next create the tables
+  CREATE TABLE <table_name> (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    message VARCHAR(500) NOT NULL
+);
+
+next you can add some sample data
+INSERT INTO <table_name> (name, message)
+VALUES ('Jane Doe', 'Hello from the Universe!');
+
+
+
+THAT'S IT FOLKS!
