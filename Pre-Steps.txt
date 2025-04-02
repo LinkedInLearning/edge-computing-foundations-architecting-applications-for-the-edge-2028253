@@ -2,6 +2,11 @@ FOR CLOUDSQL (YOU WOULD NEED TO ENABLE CLOUDSQL AND CREATE THE INSTANCE/DB FIRST
 ================================================================================================================
 Before you can use cloudsql in your deployment, a few steps need to be taken.
 
+## Initialize gcloud and get the context
+  gcloud auth login
+  gcloud auth configure-docker
+
+Next:
   gcloud auth application-default login
   gcloud iam service-accounts create cloudsql-proxy-sa --display-name="Cloud SQL Proxy GKE"
   gcloud projects add-iam-policy-binding <PROJECT_ID> --member="serviceAccount:cloudsql-proxy-sa@<PROJECT_ID>.iam.gserviceaccount.com" --role="roles/cloudsql.client"

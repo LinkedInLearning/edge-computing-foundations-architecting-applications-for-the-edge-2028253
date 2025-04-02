@@ -12,6 +12,6 @@ data:
 
     INSERT INTO guestbook_message (name, message)
     VALUES
-      ('Alice', 'Hello from the guestbook!'),
+      ('Alice', 'Hello from the LinkedIn Learning!'),
       ('Bob', 'This is a great app!');
 
