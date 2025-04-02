@@ -24,7 +24,16 @@ spec:
               value: "mydb"
           ports:
             - containerPort: 5432
+          volumeMounts:
+            - name: init-script
+              mountPath: /docker-entrypoint-initdb.d
+      volumes:
+        - name: init-script
+          configMap:
+            name: postgres-init-script
+
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -36,3 +45,4 @@ spec:
     - protocol: TCP
       port: 5432
       targetPort: 5432
+
