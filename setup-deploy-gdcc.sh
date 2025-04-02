@@ -17,3 +17,5 @@ cd ~/edge-computing-foundations-architecting-applications-for-the-edge-2028253/G
 kubectl apply -f postgres-configmap.yaml
 kubectl apply -f postgres-db-deployment.yaml
 kubectl apply -f deployment.yaml
+
+echo "deployment completed"
