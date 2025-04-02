@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: guestbook-app
-          image: us-central1-docker.pkg.dev/gdcedge/gdcc-course/guestbook-app-slim:latest
+          image: us-central1-docker.pkg.dev/gdcedge/gdcc-course/guestbook-gdcc-app:latest
           ports:
             - containerPort: 5000
           env:
