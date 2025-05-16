@@ -20,5 +20,5 @@ Check out my other courses on [LinkedIn Learning](https://www.linkedin.com/learn
 [0]: # (Replace these placeholder URLs with actual course URLs)
 
 [lil-course-url]: https://www.linkedin.com/learning/edge-computing-foundations-architecting-gdc-connected-applications-for-the-edge
-[lil-thumbnail-url]: http://
+[lil-thumbnail-url]: https://media.licdn.com/dms/image/v2/D4E0DAQH3f6lCc6HHug/learning-public-crop_675_1200/B4EZbUhAABHIAY-/0/1747322143020?e=1748034000&v=beta&t=xF17TCbXFi_024Tah64phAR3pQzAcTSUyj9YbrTfpuQ
 
